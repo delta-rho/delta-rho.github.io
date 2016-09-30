@@ -102,8 +102,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
 }
 
-p {
-  font-size: 19px;
+p, ul {
+  font-size: 17px;
 }
 
 // .responsive-text {
@@ -122,6 +122,10 @@ p {
   top: 3px;
 }
 
+.regular-list {
+  padding-left: 20px;
+}
+
 @media #{$medium-and-up} {
   .logo-wrapper {
     height: $navbar-height;
@@ -132,7 +136,7 @@ p {
   #main-header {
     margin-top: 17px;
   }
-  p {
+  p, ul {
     font-size: 18px;
   }
   // .responsive-text {
@@ -179,6 +183,7 @@ p {
 
 figure {
   margin: 0px;
+  font-size: 14px;
 }
 
 #github-link {

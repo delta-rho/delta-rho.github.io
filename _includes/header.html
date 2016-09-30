@@ -1,0 +1,53 @@
+
+<header>
+<div class="navbar-fixed">
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+    <a id="logo-container" href="/index.html" class="brand-logo black-text">
+      <div id="all-logo-wrapper">
+        <div class="valign-wrapper left logo-wrapper">
+          <img id="logo" height="48px" src="../public/images/logo.svg" />
+        </div>
+        <div class="valign-wrapper left logo-wrapper">
+          <img id="deltarho" height="24px" src="../public/images/deltarho.svg" />
+        </div>
+      </div>
+      </a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse black-text"><i class="icon-menu"></i></a>
+      <ul class="right hide-on-med-and-down">
+        <li class="{{ include.qs_active }}"><a href="quickstart.html" class="black-text waves-effect waves-light">Quickstart</a></li>
+        <li class="{{ include.news_active }}"><a href="news.html" class="black-text waves-effect waves-light">News</a></li>
+        <li>
+          <a href="http://github.com/delta-rho" class="black-text waves-effect waves-light">
+            <i id="github-link" class="icon-github"></i>
+          </a>
+        </li>
+      </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="quickstart.html" class="black-text waves-effect waves-light">Quickstart</a></li>
+        <li class="{{ news_active }}"><a href="news.html" class="black-text waves-effect waves-light">News</a></li>
+        <li>
+          <a href="http://github.com/delta-rho" class="black-text waves-effect waves-light">
+            <i id="github-link" class="icon-github"></i>
+          </a>
+        </li>
+      </ul>
+<!--
+      <ul class="right hide-on-med-and-down">
+        {% for page in site.pages %}
+        {% if page.title %}
+        <li><a class="page-link" href="{{ page.url | prepend:site.baseurl }}">{{ page.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      <ul id="nav-mobile" class="side-nav">
+        {% for page in site.pages %}
+        <li><a href="#">{{ page.title }}</a></li>
+        {% endfor %}
+      </ul>
+ -->
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="icon-menu"></i></a>
+    </div>
+  </nav>
+</div>
+</header>

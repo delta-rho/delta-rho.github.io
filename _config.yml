@@ -1,0 +1,11 @@
+exclude: [_ignore, CNAME, README.md]
+
+title: DeltaRho
+description: "DeltaRho"
+url: "http://deltarho.org"
+baseurl: ""
+
+markdown: kramdown
+
+sass:
+  style: compressed

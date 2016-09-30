@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ve4ljm');
+  src:  url('fonts/icomoon.eot?ve4ljm#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ve4ljm') format('truetype'),
+    url('fonts/icomoon.woff?ve4ljm') format('woff'),
+    url('fonts/icomoon.svg?ve4ljm#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-server:before {
+  content: "\e900";
+}
+.icon-gift:before {
+  content: "\f06b";
+}
+.icon-twitter:before {
+  content: "\f099";
+}
+.icon-github:before {
+  content: "\f09b";
+}
+.icon-file-text-o:before {
+  content: "\f0f6";
+}
+.icon-code-fork:before {
+  content: "\f126";
+}
+.icon-stack-overflow:before {
+  content: "\f16c";
+}
+.icon-cube:before {
+  content: "\f1b2";
+}
+.icon-question-circle-o:before {
+  content: "\f29c";
+}
+.icon-cloud_queue:before {
+  content: "\e2c2";
+}
+.icon-open_in_new:before {
+  content: "\e89e";
+}
+.icon-library_books:before {
+  content: "\e02f";
+}
+.icon-menu:before {
+  content: "\e5d2";
+}
+

@@ -1,0 +1,139 @@
+---
+layout: default
+---
+<div class="section">
+  <div class="row">
+    <div id="news" class="col s12 m12 l4 push-l8 light-blue lighten-5">
+      <h6>News</h6>
+      <ul>
+      {% for post in site.posts limit 4 %}
+        <li>
+          <a href="{{ post.url }}">
+            <strong>{{ post.title }}</strong>
+            ({{ post.date | date: "%b %e, %Y" }})
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+      <div id="more-news-link">
+        <a href="news.html"><strong>Archive</strong></a>
+      </div>
+    </div>
+    <div class="col s12 m12 l8 pull-l4">
+      <div class="col-right-pad center">
+        <h4 id="main-header">Analyze and Visualize Large Complex Data in R</h4>
+        <p class="title-text">
+          DeltaRho is an open source project with the goal of providing methods and tools that enable deep analysis of large complex data.
+          <!-- It consists of research into theory and methods, Divide and Recombine (D&amp;R), and software implementations. -->
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col m12 l7">
+      <div class="col-right-pad">
+        <h5>Deep Analysis</h5>
+        <p>
+        Big data is usually complex, and to get the most out of the data &mdash; to do <em>deep analysis</em> &mdash; requires a great deal of flexibility in analytical methods and data structures.
+        </p>
+        <!-- <p>
+        Full flexibility in systems for processing big data can be difficult to find as many systems either enforcing simple data structures, only allowing simple aggregations, only providing a handful of pre-defined algorithms, or not being made available in a high-level data science language like R.
+        </p> -->
+        <p>
+        Our goal with DeltaRho is to provide flexibility at scale, allowing the thousands of analytic, visualization, and machine learning methods available in R, along with any R data structure, to be used with large complex data.
+        <!-- The underlying principle of this approach is Divide and Recombine (D&amp;R). -->
+        Behind this effort is a statistical approach called Divide and Recombine (D&amp;R).
+        </p>
+        <p>
+          <a href="http://ml.stat.purdue.edu/docs/dr.rhipe.stat.2012.pdf" target="_blank" rel="noopener noreferrer" class="btn-floating waves-effect waves-light red"><i class="icon-open_in_new"></i></a><span class="button-text">Read more about D&amp;R</span>
+        </p>
+      </div>
+    </div>
+    <div class="col m12 l5">
+      <div class="center row">
+        <img class="responsive-img margin-top" src="public/images/drdiagram.png">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col m12 l7">
+      <div class="col-right-pad">
+        <h5>Detailed Visualization</h5>
+        <p>
+          Visualization is essential in all aspects of data analysis.  To avoid missing critical insights, it is important to be able to visualize the data in detail, particularly with big data.
+          <!-- and is often absent or an afterthought in open source big data processing systems -->
+
+          <!-- and a common approach to visualizing a large data set is computing summaries and visualizing the summary. Only visualizing summaries of a large data set is bound to result in missed insights. -->
+        </p>
+        <p>
+          Our visualization system in DeltaRho, Trelliscope, provides a way to easily and flexibly specify scalable detailed visualizations.  Trelliscope is a natural visual extension of the D&amp;R approach.
+          <p>
+            <a href="http://hafen.github.io/trelliscopejs-demo/" target="_blank" rel="noopener noreferrer" class="btn-floating waves-effect waves-light red"><i class="icon-open_in_new"></i></a><span class="button-text">Try a demo of Trelliscope</span>
+          </p>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+      </div>
+    </div>
+    <div class="col m12 l5">
+      <div class="center row">
+        <img class="responsive-img margin-top z-depth-2" src="public/images/trelliscope.png">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 l6">
+      <h5>Try it Out</h5>
+      <p>
+        You can start playing around with the DeltaRho packages by simply installing the base R packages from CRAN.  The back-end agnostic design of these packages allows you to try things out locally before working on a cluster.
+      </p>
+      <p>
+        <a href="quickstart.html" class="btn-floating waves-effect waves-light red"><i class="icon-open_in_new"></i></a><span class="button-text">See examples at our quick start page</span>
+      </p>
+    </div>
+    <div class="col s12 l6">
+      <div class="row margin-top">
+{% highlight r %}
+# Install base DeltaRho packages from CRAN
+install.packages("datadr")
+install.packages("trelliscope")
+{% endhighlight %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 center">
+      <h5>Resources</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m4">
+      <h5 class="center">Tutorials</h5>
+<!-- library_books -->
+      <p>
+        Stuff
+      </p>
+    </div>
+    <div class="col s12 m4">
+      <h5 class="center">Help</h5>
+<!-- live_help -->
+      <p>
+        Stuff
+      </p>
+    </div>
+    <div class="col s12 m4">
+      <h5 class="center">Get Involved</h5>
+      <p>
+        Stuff
+      </p>
+    </div>
+  </div>
+
+</div>

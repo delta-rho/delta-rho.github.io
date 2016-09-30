@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    {% include header.html news_active=page.news_active qs_active=page.qs_active %}
+    <main>
+      <div class="page-content">
+        <div class="container">
+          {{ content }}
+        </div>
+      </div>
+    </main>
+    <footer class="page-footer blue-grey">
+      {% include footer2.html %}
+    </footer>
+  </body>
+  {% include scripts.html %}
+</html>

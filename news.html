@@ -1,0 +1,19 @@
+---
+layout: other_wrapper
+news_active: active
+---
+
+<h4>DeltaRho News</h4>
+
+{% for post in site.posts %}
+  <div class="section">
+    <h5><a class="blue-text darken-3" href="{{ post.url }}">{{ post.title }}</a></h5>
+    <p class="post-meta">
+      {{ post.date | date: "%b %e, %Y" }}
+    </p>
+    <p>
+      {{ post.excerpt }}
+    </p>
+  </div>
+  <div class="divider"></div>
+{% endfor %}

@@ -1,0 +1,163 @@
+---
+layout: other_wrapper
+qs_active: active
+---
+<div class="section">
+  <div class="row">
+    <div class="col m12 l6">
+      <div class="panel quickstart-panel">
+        <div class="panel-body">
+          <h3 class="center">Install</h3>
+          <div class="quickstart-text">
+          <p>
+DeltaRho is available as a <em>local stack</em> that can be installed on a single workstation and a <em>full stack</em> to be installed on a cluster.  In either case, we provide options for you to get your DeltaRho environment up and running.
+          </p>
+          <p>
+The local stack simply consists of the following:
+            <ul>
+              <li>R</li>
+              <li>datadr R package</li>
+              <li>Trelliscope R package</li>
+            </ul>
+          </p>
+          <p>
+The full stack has the above components as well as the the following on each node of the cluster:
+            <ul>
+              <li>Hadoop</li>
+              <li>RHIPE Hadoop connector R package</li>
+              <li>RStudio Server (namenode only)</li>
+              <li>Shiny Server (namenode only)</li>
+            </ul>
+It is also possible for other connectors and distributed computing technologies to be replaced by Hadoop and RHIPE, such as Spark and SparkR.  Regardless, your code stays virtually the same.
+          </p>
+          </div>
+          <h4><i class="icon-gift"></i>Local Stack on Workstation</h4>
+          <div class="quickstart-text">
+            <p>
+After <a href="http://cran.us.r-project.org">installing R</a>, simply launch R, install the devtools package from CRAN, and then install the datadr and Trelliscope R packages:
+            </p>
+            <pre class="no-border"><code class="language-r">install.packages("devtools") # if not installed
+library(devtools)
+install_github("delta-rho/datadr")
+install_github("delta-rho/trelliscope")</code></pre>
+            <p>
+Now you are ready to try out the quick start code or begin working through the tutorials, and your environment is suitable for analyzing small to moderate (low gigabyte) data.
+            </p>
+          </div>
+          <h4><i class="icon-cube"></i>Full Stack on Vagrant VM</h4>
+          <div class="quickstart-text">
+            <p>
+To get a feel for running in a large-scale DeltaRho environment, we have provided a <a href="http://www.vagrantup.com">Vagrant</a> setup that with a few simple commands allows you to provision a virtual machine on your workstation with the full DeltaRho stack running.
+            </p>
+            <p>
+The Vagrant script and instructions are available on
+<a href="https://github.com/delta-rho/install-vagrant">Github.</a>
+            </p>
+          </div>
+
+          <h4><i class="icon-cloud_queue"></i>Full Stack on Amazon Web Services</h4>
+          <div class="quickstart-text">
+            <p>
+We have provided an easy way to get going with DeltaRho in a large-scale environment through a simple set of scripts that provision the DeltaRho environment on Amazon's Elastic MapReduce (EMR).  This allows you to spin up virtual clusters on-demand.  An Amazon account is required.
+            </p>
+            <p>
+This environment comes with <a href="http://www.rstudio.com">RStudio Server</a> running on the master node, so that all you need is a web browser to access R Studio, a fantastic R IDE that will be backed by your own Hadoop cluster.
+            </p>
+            <p>
+The EMR scripts and instructions are available on
+<a href="https://github.com/delta-rho/install-emr">Github.</a>
+            </p>
+          </div>
+          <h4><i class="icon-server"></i>Full Stack on Your Cluster</h4>
+          <div class="quickstart-text">
+            <p>
+Setting up and installing all of the DeltaRho components on your own cluster will require more commitment in terms of hardware, installation, configuration, and administration.  We have put together an installation manual that is available <a href="http://deltarho.org/docs-install-cluster/">here</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col m12 l6">
+      <div class="panel quickstart-panel">
+        <div class="panel-body">
+          <h3 class="center">Try It</h3>
+          <p>
+Here is a simple example to get a feel for DeltaRho usage.  Commentary about the example is available in the datadr tutorial <a href="http://deltarho.org/docs-datadr/#quickstart">here</a>.  For more compelling
+examples of DeltaRho in action, as well as in-depth tutorials, check out the
+<span class="page-scroll"><a href="#resources">Resources</a></span> section and the <a href="blog"s>blog</a>.
+          </p>
+{% highlight r %}
+# install package with housing data
+install.packages("housingData")
+library(housingData)
+library(datadr)
+library(trelliscope)
+
+# look at housing data
+head(housing)
+
+# divide by county and state
+byCounty <- divide(housing,
+by = c("county", "state"), update = TRUE)
+
+# look at summaries
+summary(byCounty)
+
+# look at overall distribution of median list price
+priceQ <- drQuantile(byCounty,
+var = "medListPriceSqft")
+xyplot(q ~ fval, data = priceQ,
+scales = list(y = list(log = 10)))
+
+# slope of fitted line of list price for each county
+lmCoef <- function(x)
+coef(lm(medListPriceSqft ~ time, data = x))[2]
+# apply lmCoef to each subset
+byCountySlope <- addTransform(byCounty, lmCoef)
+
+# look at a subset of transformed data
+byCountySlope[[1]]
+
+# recombine all slopes into a single data frame
+countySlopes <- recombine(byCountySlope, combRbind)
+plot(sort(countySlopes$val))
+
+# make a time series trelliscope display
+vdbConn(tempfile("vdb"), autoYes = TRUE)
+
+# make and test panel function
+timePanel <- function(x)
+xyplot(medListPriceSqft + medSoldPriceSqft ~ time,
+data = x, auto.key = TRUE, ylab = "$ / Sq. Ft.")
+timePanel(byCounty[[1]]$value)
+
+# make and test cognostics function
+priceCog <- function(x) { list(
+slope = cog(lmCoef(x), desc = "list price slope"),
+meanList = cogMean(x$medListPriceSqft),
+listRange = cogRange(x$medListPriceSqft),
+nObs = cog(sum(!is.na(x$medListPriceSqft)),
+desc = "number of non-NA list prices")
+)}
+priceCog(byCounty[[1]]$value)
+
+# add display panel and cog function to vdb
+makeDisplay(byCounty,
+name = "list_sold_vs_time",
+desc = "List and sold price over time",
+panelFn = timePanel, cogFn = priceCog,
+width = 400, height = 400,
+lims = list(x = "same"))
+
+# view the display
+view()
+{% endhighlight %}
+          <p>
+            You can view this and some related Trelliscope displays <a href="https://hafen.shinyapps.io/tesseraTutorial/#name=list_sold_vs_time_quickstart&group=common&labels=county,state" target="_blank">here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

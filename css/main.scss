@@ -73,7 +73,8 @@ h1, h2, h3, h4, h5, h6 {
 #main-header {
   margin-top: 0px;
   font-weight: 300;
-  max-width: 600px;
+  max-width: 400px;
+  line-height: 42px;
   margin: auto;
 }
 
@@ -182,6 +183,10 @@ figure {
 
 #github-link {
   font-size: 24px;
+}
+
+.icon-big {
+  font-size: 35px;
 }
 
 // so footer is always on bottom

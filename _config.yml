@@ -5,6 +5,8 @@ description: "DeltaRho"
 url: "http://deltarho.org"
 baseurl: ""
 
+excerpt_separator: <!--more-->
+
 markdown: kramdown
 
 sass:

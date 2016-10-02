@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
 }
 
-p, ul {
+main {
   font-size: 17px;
 }
 
@@ -126,8 +126,16 @@ p, ul {
   top: 3px;
 }
 
-.regular-list {
+ul {
   padding-left: 20px;
+}
+
+li {
+  list-style-type: disc !important;
+}
+
+.nav-ul li {
+  list-style-type: none !important;
 }
 
 @media #{$medium-and-up} {
@@ -140,7 +148,7 @@ p, ul {
   #main-header {
     margin-top: 17px;
   }
-  p, ul {
+  main {
     font-size: 18px;
   }
   // .responsive-text {
@@ -151,6 +159,13 @@ p, ul {
   }
   .margin-top {
     margin-top: 0px;
+  }
+}
+
+// fix for nav links not having whitespace above on hover
+html{
+  @media only screen and (min-width: $large-screen) {
+    font-size: 14.5px;
   }
 }
 

@@ -14,8 +14,9 @@
       </div>
       </a>
       <a href="#" data-activates="nav-mobile" class="button-collapse black-text"><i class="icon-menu"></i></a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right hide-on-med-and-down nav-ul">
         <li class="{{ include.qs_active }}"><a href="quickstart.html" class="black-text waves-effect waves-light">Quickstart</a></li>
+        <li class="{{ include.rsch_active }}"><a href="research.html" class="black-text waves-effect waves-light">Research</a></li>
         <li class="{{ include.news_active }}"><a href="news.html" class="black-text waves-effect waves-light">News</a></li>
         <li>
           <a href="http://github.com/delta-rho" class="black-text waves-effect waves-light">
@@ -24,8 +25,9 @@
         </li>
       </ul>
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="quickstart.html" class="black-text waves-effect waves-light">Quickstart</a></li>
-        <li class="{{ news_active }}"><a href="news.html" class="black-text waves-effect waves-light">News</a></li>
+        <li class="{{ include.qs_active }}"><a href="quickstart.html" class="black-text waves-effect waves-light">Quickstart</a></li>
+        <li class="{{ include.rsch_active }}"><a href="research.html" class="black-text waves-effect waves-light">Research</a></li>
+        <li class="{{ include.news_active }}"><a href="news.html" class="black-text waves-effect waves-light">News</a></li>
         <li>
           <a href="http://github.com/delta-rho" class="black-text waves-effect waves-light">
             <i id="github-link" class="icon-github"></i>

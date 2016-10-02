@@ -188,8 +188,17 @@ html{
   color: black;
 }
 
+#news ul {
+  padding-left: 0px;
+}
+
 #news li {
   margin-bottom: 4px;
+  list-style-type: none !important;
+}
+
+#news li:last-child {
+  padding-bottom: 5px;
 }
 
 #more-news-link {

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Tessera project is now DeltaRho!"
-date:   2016-09-29
+date:   2016-09-28
 permalink: tessera-to-deltarho
 ---
 

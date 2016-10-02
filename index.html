@@ -6,7 +6,7 @@ layout: default
     <div id="news" class="col s12 m12 l4 push-l8 light-blue lighten-5">
       <h6>News</h6>
       <ul>
-      {% for post in site.posts limit 4 %}
+      {% for post in site.posts limit: 4 %}
         <li>
           <a href="{{ post.url }}">
             <strong>{{ post.title }}</strong>
@@ -16,7 +16,9 @@ layout: default
       {% endfor %}
       </ul>
       <div id="more-news-link">
-        <a href="news.html"><strong>Archive</strong></a>
+        <a href="news.html">
+          <strong>Archive ({{ site.posts | size }})</strong>
+        </a>
       </div>
     </div>
     <div class="col s12 m12 l8 pull-l4">
@@ -123,6 +125,7 @@ The best way to get started digging deeper into DeltaRho is to follow the tutori
         <a href="http://deltarho.org/docs-trelliscope/">Trelliscope</a>,
         <a href="http://deltarho.org/docs-RHIPE/">RHIPE</a>.
       </p>
+      <p>Also visit the <a href="quickstart.html">quickstart</a> page for more information on installation.
     </div>
     <div class="col s12 m4">
       <h5 class="center"><i class="icon-question-circle-o"></i> Help</h5>
